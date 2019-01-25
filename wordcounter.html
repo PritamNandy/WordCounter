@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Word Counter</title>
+  </head>
+  <body>
+    <center>
+      <img src="wc4.png" alt="">
+      <h4>Designed By <a href="https://themeforest.net/user/pritamslab"> Pritam's Lab </a></h4>
+      <textarea id="tinput" name="tinput" rows="10" cols="100">Enter Your Text</textarea>
+      <h3><button type="button" name="button" onclick="myFunction();">Enter</button></h3>
+      <h2>
+        No of Words: <input id = "noofwords" type="text" value="" size="6"><br>
+        No of Letters: <input id = "noofletters" type="text" value="" size="6"><br>
+        No of Unique Words: <input id = "count" type="text" value="" size="6"><br>
+      </h2>
+    </center>
+
+    <script type="text/javascript">
+
+      function myFunction()
+      {
+        str1= document.getElementById("tinput").value;
+        str1 = str1.replace(/(^\s*)|(\s*$)/gi,"");
+        str1 = str1.replace(/[ ]{2,}/gi," ");
+        str1 = str1.replace(/\n /,"\n");
+        document.getElementById("noofwords").value = str1.split(' ').length;
+        char_count(str1)
+        word_freqency(str1)
+      }
+
+      function char_count(str)
+      {
+         var letter_Count = 0;
+         for (var position = 0; position < str.length; position++)
+         {
+              letter_Count += 1;
+         }
+         document.getElementById("noofletters").value = letter_Count;
+      }
+
+      function word_freqency(str)
+      {
+        var splitted = str.split(" ");
+        var words = [];
+        for(var i=0; i<splitted.length; i++) {
+            words[splitted[i]] = ( typeof words[splitted[i]] != 'undefined' ) ? words[splitted[i]]+=1 : 1
+        }
+        var words_counter = 0
+        for (key in words) {
+        words_counter++;
+        document.getElementById("key").value = key;
+        document.getElementById("keycount").value = words[key];
+       }
+        document.getElementById("count").value = words_counter;
+      }
+
+    </script>
+  </body>
+</html>
