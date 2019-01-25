@@ -16,9 +16,14 @@
         No of Unique Words: <input id = "count" type="text" value="" size="6"><br>
       </h2>
     </center>
+    <label id="key"> </label>
+    <label id="keycount"> </label>
+    <label id="count"> </label>
+    <label id="totalCount"> </label>
+    <br>
+
 
     <script type="text/javascript">
-
       function myFunction()
       {
         str1= document.getElementById("tinput").value;
@@ -44,16 +49,23 @@
       {
         var splitted = str.split(" ");
         var words = [];
+
         for(var i=0; i<splitted.length; i++) {
+
             words[splitted[i]] = ( typeof words[splitted[i]] != 'undefined' ) ? words[splitted[i]]+=1 : 1
+
         }
+
         var words_counter = 0
+
         for (key in words) {
         words_counter++;
+
         document.getElementById("key").value = key;
         document.getElementById("keycount").value = words[key];
        }
         document.getElementById("count").value = words_counter;
+        document.getElementById("totalCount").value = splitted.length;
       }
 
     </script>
